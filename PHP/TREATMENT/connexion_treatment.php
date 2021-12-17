@@ -1,6 +1,6 @@
 <?php
 session_start(); // On ouvre une session.
-$bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', ''); // Je me connecte à ma BDD 'blog'.
+require_once('configuration.php');
 if(isset($_POST['Connexion']))
 {
     if(!empty($_POST['login']) AND!empty($_POST['password'])) // Avec else, il va afficher un message si des champs ont étés oubliés.
@@ -27,4 +27,3 @@ if(isset($_POST['Connexion']))
         echo "Tous les champs doivent être remplis"; // Le message des champs oubliés.
     }
 }
-?>
