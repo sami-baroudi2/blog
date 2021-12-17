@@ -1,4 +1,5 @@
 <?php
+// Page par Jul
 session_start(); // On ouvre une session.
 require_once('configuration.php');
 if(isset($_POST['Connexion']))

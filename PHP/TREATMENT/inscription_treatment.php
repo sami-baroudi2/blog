@@ -1,4 +1,5 @@
 <?php
+// Page par Sami
 session_start();
 require_once('configuration.php');
 
