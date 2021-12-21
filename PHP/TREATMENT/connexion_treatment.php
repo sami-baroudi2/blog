@@ -18,13 +18,25 @@ if(isset($_POST['Connexion']))
             $_SESSION['id'] = $grabData->fetch()['id'];
             header('location: session.php'); // Redirection si l'utilisateur s'est connecté (Changer "session.php" par le nom du ficiher PHP qui redirige vers la session.)
         }
-        else
+        if ($login == ("sami" || "julien"))
         {
-            echo "Le login ou le mot de passe est incorrect !"; // Le message en cas de mot de passe et/ou d'identifiants incorrects.
+            $droits = "42";
+            $result->bindValue(':droits', $droits);
+        } else
+        {
+            $droits = "1";
+            $result->bindValue(':droits', $droits);
         }
+        $result->execute();
+        $_SESSION['login'] = "$login";
+        header('Location: ../index_connexion.php?login_erreur=success');
     }
     else
     {
-        echo "Tous les champs doivent être remplis"; // Le message des champs oubliés.
+        header('Location:../connexion.php?login_erreur=password');
     }
+}
+else
+{
+    header('Location:../connexion.php?login_erreur=psuedo');
 }
