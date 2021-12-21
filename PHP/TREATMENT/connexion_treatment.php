@@ -29,14 +29,14 @@ if(isset($_POST['Connexion']))
         }
         $result->execute();
         $_SESSION['login'] = "$login";
-        header('Location: ../index_connexion.php?login_erreur=success');
+        header('Location: PHP/index_connexion.php?login_erreur=success');
     }
     else
     {
-        header('Location:../connexion.php?login_erreur=password');
+        header('Location: PHP/connexion.php?login_erreur=password');
     }
 }
 else
 {
-    header('Location:../connexion.php?login_erreur=psuedo');
+    header('Location: PHP/connexion.php?login_erreur=psuedo');
 }
