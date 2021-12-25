@@ -4,7 +4,7 @@ session_start(); // On ouvre une session.
 require_once('configuration.php');
 if(isset($_POST['Connexion']))
 {
-    if(!empty($_POST['login']) AND!empty($_POST['password'])) // Avec else, il va afficher un message si des champs ont étés oubliés.
+    if(!empty($_POST['login']) AND !empty($_POST['password'])) // Avec else, il va afficher un message si des champs ont étés oubliés.
     {
         $login = htmlspecialchars($_POST['login']); // 'htmlspecialchars' une petite sécurité pour éviter d'écrire du HTML sur les champs.
         $password = htmlspecialchars($_POST['password']);
