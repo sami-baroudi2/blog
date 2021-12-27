@@ -1,6 +1,5 @@
 <?php
 // Page par Sami
-session_start();
 require_once('../configuration.php');
 
 if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['confirmation']) && !empty($_POST['email'])) {
@@ -42,19 +41,10 @@ if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['conf
                     $result->bindValue(':login', $login);
                     $result->bindValue(':hash', $hash);
                     $result->bindValue(':email', $email);
-
-
-                    if ($login == ("sami" || "julien")) {
-                        $droits = "42";
-                        $result->bindValue(':droits', $droits);
-                    } else {
-                        $droits = "1";
-                        $result->bindValue(':droits', $droits);
-                    }
+                    $droits = 1;
+                    $result->bindValue(':droits', $droits);
                     $result->execute();
-                    $_SESSION['login'] = "$login";
-
-                    header('Location: ../index_connexion.php?login_err=success');
+                    header('Location:../index_connexion.php?login_err=success');
                 } else {
                     header('Location:../inscription.php?inscription_err=password');
                 }

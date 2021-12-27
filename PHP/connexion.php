@@ -7,12 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="connexion_treatment.php" method="post">
-        <label for="login">Login or Email</label>
+    <form action="TREATMENT/connexion_treatment.php" method="post">
+        <label for="login">Login</label>
         <input type="text" name="login" required><br><br>
         <label for="password">Password</label>
         <input type="password" name="password" required><br><br>
-        <input type="submit" name="BtnCo">
+        <input type="submit" name="BtnCo" value="connexion">
 
         <p><a class="forgot" href="forgot_password.php">Forgot your password ?</a></p>
     </form>
