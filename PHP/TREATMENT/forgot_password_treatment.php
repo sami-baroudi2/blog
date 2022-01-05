@@ -30,7 +30,7 @@ if (isset($_POST['BtnResetPwd'])) {
             $header[] = "MIME-Version 1.0";
             $header[] = "Content-type : text/html; charset=utf-8";
             $header[] = "To: $to";
-            $header[] = "From: No-reply@laplateforme.io";
+            $header[] = "From: no-reply@laplateforme.io";
 
             mail($to, $subject, $message, implode("r/n", $header));
             header('Location:../forgot_password.php?message=success');
