@@ -16,6 +16,7 @@ if(isset($_POST['Connexion']))
             $_SESSION['login'] = $login;
             $_SESSION['password'] = $password;
             $_SESSION['id'] = $grabData->fetch()['id'];
+<<<<<<< HEAD
             header('location: ../index.php'); // Redirection si l'utilisateur s'est connecté (Changer "session.php" par le nom du ficiher PHP qui redirige vers la session.)
         }
        // if ($login == ("sami" || "julien"))
@@ -34,9 +35,34 @@ if(isset($_POST['Connexion']))
     else
     {
         header('Location: connexion.php?login_erreur=password');
+=======
+            header('location: session.php'); // Redirection si l'utilisateur s'est connecté (Changer "session.php" par le nom du ficiher PHP qui redirige vers la session.)
+        }
+        if ($login == ("sami" || "julien"))
+        {
+            $droits = "42";
+            $result->bindValue(':droits', $droits);
+        } else
+        {
+            $droits = "1";
+            $result->bindValue(':droits', $droits);
+        }
+        $result->execute();
+        $_SESSION['login'] = "$login";
+        header('Location: PHP/index_connexion.php?login_erreur=success');
+    }
+    else
+    {
+        header('Location: PHP/connexion.php?login_erreur=password');
+>>>>>>> a6790694837c85ac42b7dbd7fdd329a39e95b0ff
     }
 }
 else
 {
+<<<<<<< HEAD
     header('Location: connexion.php?login_erreur=psuedo');
 }
+=======
+    header('Location: PHP/connexion.php?login_erreur=psuedo');
+}
+>>>>>>> a6790694837c85ac42b7dbd7fdd329a39e95b0ff
