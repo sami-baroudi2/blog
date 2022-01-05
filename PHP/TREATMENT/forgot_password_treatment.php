@@ -15,7 +15,7 @@ if (isset($_POST['BtnResetPwd'])) {
             $str = implode('', array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9)));
             $token = substr(str_shuffle($str), 0, 20);
 
-            $statement = $db->prepare('UPDATE utilisateurs SET date_recuperation-pwd = NOW(), token_recuperation = ? WHERE email = ?');
+            $statement = $db->prepare('UPDATE utilisateurs SET date_recuperation_pwd = NOW(), token_recuperation = ? WHERE email = ?');
             $statement->bindValue(1, $token);
             $statement->bindValue(2, $email);
             $statement->execute();
