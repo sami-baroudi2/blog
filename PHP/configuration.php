@@ -1,5 +1,5 @@
 <?php
-
+// Page par Sami
 try {
 
 $db = new PDO  ("mysql:host = localhost ;dbname=blog", 'root' , ''); 

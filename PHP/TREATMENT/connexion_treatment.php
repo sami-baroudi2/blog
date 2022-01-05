@@ -1,7 +1,7 @@
 <?php
 // Page par Jul
 session_start(); // On ouvre une session.
-require_once('configuration.php');
+require_once('../configuration.php');
 if(isset($_POST['Connexion']))
 {
     if(!empty($_POST['login']) AND!empty($_POST['password'])) // Avec else, il va afficher un message si des champs ont étés oubliés.
@@ -16,15 +16,27 @@ if(isset($_POST['Connexion']))
             $_SESSION['login'] = $login;
             $_SESSION['password'] = $password;
             $_SESSION['id'] = $grabData->fetch()['id'];
-            header('location: session.php'); // Redirection si l'utilisateur s'est connecté (Changer "session.php" par le nom du ficiher PHP qui redirige vers la session.)
+            header('location: ../index.php'); // Redirection si l'utilisateur s'est connecté (Changer "session.php" par le nom du ficiher PHP qui redirige vers la session.)
         }
-        else
-        {
-            echo "Le login ou le mot de passe est incorrect !"; // Le message en cas de mot de passe et/ou d'identifiants incorrects.
-        }
+       // if ($login == ("sami" || "julien"))
+       // {
+       //     $droits = "42";
+       //     $result->bindValue(':droits', $droits);
+       // } else
+       // {
+       //     $droits = "1";
+       //     $result->bindValue(':droits', $droits);
+       // }
+       $result->execute();
+       $_SESSION['login'] = "$login";
+        header('Location: index_connexion.php?login_erreur=success');
     }
     else
     {
-        echo "Tous les champs doivent être remplis"; // Le message des champs oubliés.
+        header('Location: connexion.php?login_erreur=password');
     }
+}
+else
+{
+    header('Location: connexion.php?login_erreur=psuedo');
 }
