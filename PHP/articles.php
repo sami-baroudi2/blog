@@ -1,6 +1,6 @@
 <?php
 // Page par Jul
-require_once('../configuration.php');
+require_once('configuration.php');
 $articles = $bdd->query('SELECT * FROM `articles` ORDER BY `id` DESC');
 ?>
 <!-- HTML -->
