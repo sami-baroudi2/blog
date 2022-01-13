@@ -1,6 +1,6 @@
 <?php
 // Page par Jul
-require_once('../configuration.php');
+require_once('configuration.php');
 if(isset($_POST['article_title'], $_POST['article_content']))
 {
     if(!empty($_POST['article_title']) AND !empty($_POST['article_content']))
