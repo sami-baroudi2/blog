@@ -1,14 +1,13 @@
 <?php
 // Page par Jul
 require_once('configuration.php');
-if(isset($_POST['article_title'], $_POST['article_content']))
+if(isset($_POST['article_content'], $_POST['categorie_article']))
 {
-    if(!empty($_POST['article_title']) AND !empty($_POST['article_content']))
+    if(!empty($_POST['article_content']) AND !empty($_POST['categorie_article']))
     {
-        $article_title = htmlspecialchars($_POST['article_title']);
         $article_content = htmlspecialchars($_POST['article_content']);
-        $insertData = $bdd->prepare('INSERT INTO `articles`(`id`, `article`, `id_utilisateur`, `id_categorie`, `date`) VALUES (?, ?, ?, ?, NOW())');
-        $insertData->execute(array($article_title, $article_content));
+        $insertData = $db->prepare('INSERT INTO `articles`(`article`, `id_categorie`, `date`, `id`, `id_utilisateur`) VALUES (?, ?, NOW()), ?, ?');
+        $insertData->execute(array($article_content, $categorie_article));
         $notif = 'Article posté!';
     }
     else
@@ -31,8 +30,13 @@ if(isset($_POST['article_title'], $_POST['article_content']))
 </head>
 <body>
     <form method="POST">
-        <input type="text" name="article_title" placeholder="Titre" />
-        <textarea name="article_content" placeholder="Contenu de l'article"></textarea>
+        <textarea name="article_content" placeholder="Contenu de l'article"></textarea><br />
+        <select name="categorie_article" class="deroulant-choix-catego">
+            <option value="">--Choisissez la catégorie--</option>
+            <option value="1">Catégorie 1</option>
+            <option value="2">Catégorie 2</option>
+            <option value="3">Catégorie 3</option>
+        </select><br />
         <input type="submit" value="Postez!" />
     </form>
     <br />
@@ -40,6 +44,10 @@ if(isset($_POST['article_title'], $_POST['article_content']))
     if(isset($notif))
     {
         echo $notif;
+    }
+    else
+    {
+        echo $erreur;
     }
     ?>
 </body>
