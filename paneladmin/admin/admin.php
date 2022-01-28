@@ -6,6 +6,7 @@ if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéd
     header('Location: ../index.php');
     die();
 }
+// Pour supprimer un utilisateur. 🗑️
 if(isset($_GET['delete']) AND !empty($_GET['delete']))
 {
     $delete = (int) $_GET['delete'];
@@ -31,10 +32,10 @@ $users = $db->query('SELECT * FROM `utilisateurs` ORDER BY id DESC'); // Je sél
         <p>Liste des membres :<p><br />
         <ul>
             <?php
-            while($data = $users->fetch())
+            while($select = $users->fetch())
             {
                 ?>
-                <li><?= $data['id'] ?> : <?= $data['login'] ?> - <a href="admin.php?delete=<?= $data['id'] ?>">Supprimer le membre</a></li>
+                <li><?= $select['id'] ?> : <?= $select['login'] ?> - <a href="admin.php?delete=<?= $select['id'] ?>">Supprimer le membre</a> - <a href="admin-profil.php?edit=<?= $select['id'] ?>">Modifier le membre.</a></li>
                 <?php
                 }
                 ?>
