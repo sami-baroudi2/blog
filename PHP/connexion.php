@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <!-- Page par Jul -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,17 +11,16 @@
     <link rel="stylesheet" href="../CSS/blog.css">
     <title>Connexion</title>
 </head>
+
 <body>
     <main>
         <h1 class="connexion-titre">Connexion</h1><br />
         <div class="zone">
             <div class="formulaire-de-co">
                 <?php
-                if (isset($_GET["login_erreur"]))
-                {
+                if (isset($_GET["login_erreur"])) {
                     $error = $_GET["login_erreur"];
-                    switch ($error)
-                    {
+                    switch ($error) {
                         case 'empty':
                 ?>
                             <div class="erreur">
@@ -51,4 +51,5 @@
         </div>
     </main>
 </body>
+
 </html>

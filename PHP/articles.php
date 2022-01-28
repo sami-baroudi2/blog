@@ -1,11 +1,12 @@
 <?php
 // Page par Jul
 require_once('configuration.php');
-$articles = $bdd->query('SELECT * FROM `articles` ORDER BY `id` DESC');
+$articles = $db->query('SELECT * FROM `articles` ORDER BY `id` DESC');
 ?>
 <!-- HTML -->
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,10 +16,12 @@ $articles = $bdd->query('SELECT * FROM `articles` ORDER BY `id` DESC');
     <link rel="stylesheet" href="CSS/blog.css">
     <title>Articles</title>
 </head>
+
 <body>
     <ul>
-        <?php while($affiche = $articles->fetch()) { ?> <li><?= $affiche['article_title'] ?></li>
+        <?php while ($affiche = $articles->fetch()) { ?> <li><?= $affiche['article_title'] ?></li>
         <?php } ?>
     </ul>
 </body>
+
 </html>

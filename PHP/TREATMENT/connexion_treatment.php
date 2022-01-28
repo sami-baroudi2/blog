@@ -1,68 +1,27 @@
 <?php
 // Page par Jul
-session_start(); // On ouvre une session.
+session_start();
 require_once('../configuration.php');
-if(isset($_POST['Connexion']))
-{
-    if(!empty($_POST['login']) AND!empty($_POST['password'])) // Avec else, il va afficher un message si des champs ont étés oubliés.
-    {
-        $login = htmlspecialchars($_POST['login']); // 'htmlspecialchars' une petite sécurité pour éviter d'écrire du HTML sur les champs.
-        $password = htmlspecialchars($_POST['password']);
-        // Je ne mettrais pas de chiffrement du mot de passe pour faciliter la correction (même si nous pouvons déchiffrer facilement) pour éviter de perdre du temps de à chaque fois c/c le mdp et le décrypter.
-        $grabData = $bdd->prepare('SELECT * FROM `utilisateurs` WHERE `login` = ? AND `password` = ?');
-        $grabData->execute(array($login, $password));
-        if($grabData->rowCount() > 0)
-        {
-            $_SESSION['login'] = $login;
-            $_SESSION['password'] = $password;
-            $_SESSION['id'] = $grabData->fetch()['id'];
-<<<<<<< HEAD
-            header('location: ../index.php'); // Redirection si l'utilisateur s'est connecté (Changer "session.php" par le nom du ficiher PHP qui redirige vers la session.)
+if (!empty($_POST['login']) && !empty($_POST['password'])) {
+    $login = trim(htmlspecialchars($_POST['login']));
+    $password = trim(htmlspecialchars($_POST['password']));
+
+    $req = "SELECT * FROM utilisateurs WHERE login = ?";
+    $check = $db->prepare($req);
+    $check->execute(array($login));
+    $data = $check->fetch();
+    $row = $check->rowCount();
+
+    if ($row > 0) {
+        if (password_verify($password, $data['password'])) {
+            $_SESSION['id'] = $data['id'];
+            header('Location:../creer-article.php');
+        } else {
+            header('Location:../connexion.php?login_erreur=login');
         }
-       // if ($login == ("sami" || "julien"))
-       // {
-       //     $droits = "42";
-       //     $result->bindValue(':droits', $droits);
-       // } else
-       // {
-       //     $droits = "1";
-       //     $result->bindValue(':droits', $droits);
-       // }
-       $result->execute();
-       $_SESSION['login'] = "$login";
-        header('Location: index_connexion.php?login_erreur=success');
+    } else {
+        header('Location:../connexion.php?login_erreur=login');
     }
-    else
-    {
-        header('Location: connexion.php?login_erreur=password');
-=======
-            header('location: session.php'); // Redirection si l'utilisateur s'est connecté (Changer "session.php" par le nom du ficiher PHP qui redirige vers la session.)
-        }
-        if ($login == ("sami" || "julien"))
-        {
-            $droits = "42";
-            $result->bindValue(':droits', $droits);
-        } else
-        {
-            $droits = "1";
-            $result->bindValue(':droits', $droits);
-        }
-        $result->execute();
-        $_SESSION['login'] = "$login";
-        header('Location: PHP/index_connexion.php?login_erreur=success');
-    }
-    else
-    {
-        header('Location: PHP/connexion.php?login_erreur=password');
->>>>>>> a6790694837c85ac42b7dbd7fdd329a39e95b0ff
-    }
+} else {
+    header('Location:../connexion.php?login_erreur=empty');
 }
-else
-{
-<<<<<<< HEAD
-    header('Location: connexion.php?login_erreur=psuedo');
-}
-=======
-    header('Location: PHP/connexion.php?login_erreur=psuedo');
-}
->>>>>>> a6790694837c85ac42b7dbd7fdd329a39e95b0ff

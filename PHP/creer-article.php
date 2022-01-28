@@ -1,54 +1,64 @@
 <?php
-// Page par Jul
-require_once('configuration.php');
-if(isset($_POST['article_content'], $_POST['categorie_article']))
-{
-    if(!empty($_POST['article_content']) AND !empty($_POST['categorie_article']))
-    {
-        $article_content = htmlspecialchars($_POST['article_content']);
-        $insertData = $db->prepare('INSERT INTO `articles`(`article`, `id_categorie`, `date`, `id`, `id_utilisateur`) VALUES (?, ?, NOW()), ?, ?');
-        $insertData->execute(array($article_content, $categorie_article));
-        $notif = 'Article posté!';
-    }
-    else
-    {
-        $erreur = 'Champs manquants!';
-    }
+require 'configuration.php';
+session_start();
+if (!isset($_SESSION['id'])) {
+    header('Location:../index.php');
+    session_destroy();
 }
+var_dump($_POST);
+var_dump($_FILES);
 ?>
-<!-- HTML -->
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/blog.css">
-    <title>Créez un article</title>
+    <title>Document</title>
 </head>
+
 <body>
-    <form method="POST">
-        <textarea name="article_content" placeholder="Contenu de l'article"></textarea><br />
-        <select name="categorie_article" class="deroulant-choix-catego">
-            <option value="">--Choisissez la catégorie--</option>
-            <option value="1">Catégorie 1</option>
-            <option value="2">Catégorie 2</option>
-            <option value="3">Catégorie 3</option>
-        </select><br />
-        <input type="submit" value="Postez!" />
+
+    <form method="POST" action="TREATMENT/creer_article_treatment.php" enctype="multipart/form-data">
+        <p>Quelle catégories d'articles voulez-vous renseigner?</p>
+        <select name="categorie">
+            <option value="cat1">Catégorie 1</option>
+            <option value="cat2">Catégorie 2</option>
+            <option value="cat3">Catégorie 3</option>
+        </select>
+
+
+
+        <label for="title">Titre de l'article</label>
+        <input type="text" name="title" placeholder="Veuillez renseigner le titre de l'article">
+        <label for="article">Texte de l'article</label>
+        <textarea name="article"></textarea>
+        <label for="file">Insérer une image</label>
+        <input type="file" name="file">
+
+
+        <input type="submit" name="submit_article" value="envoyer">
+        <?php
+        if (isset($_GET['creer'])) {
+            $error = $_GET['creer'];
+
+            switch ($error) {
+                case 'short':
+                    echo "L'article doit contenir plus de 10 caractères";
+                    break;
+
+                case 'already':
+                    echo "Un article avec le même titre existe déjà";
+                    break;
+
+                case 'short':
+                    echo "Tout les champs doivent être remplis pour procéder à la création de l'article";
+                    break;
+            }
+        }
+        ?>
     </form>
-    <br />
-    <?php
-    if(isset($notif))
-    {
-        echo $notif;
-    }
-    else
-    {
-        echo $erreur;
-    }
-    ?>
 </body>
+
 </html>
