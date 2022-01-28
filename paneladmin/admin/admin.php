@@ -1,22 +1,12 @@
 <?php
 session_start();
-try {
-
-    $db = new PDO  ("mysql:host = localhost ;dbname=blog", 'root' , ''); 
-    
-    $db-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    }
-    catch(PDOException $e) {
-        echo "ERREUR :" . " ". $e->getMessage();
-    }
-    
+require 'configuration.php';
 if (!isset($_SESSION['id']) and $_SESSION['id'] != 3) // Seul l'admin peut accéder à cette page. ⛔👮
 {
     header('Location: ../index.php');
     die();
 }
-if (isset($_GET['delete']) && !empty($_GET['delete'])) {
+if (isset($_GET['delete']) and !empty($_GET['delete'])) {
     $delete = (int) $_GET['delete'];
     $requete = $db->prepare('DELETE FROM `utilisateurs` WHERE id = ?');
     $requete->execute(array($delete));
@@ -46,12 +36,12 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC');
     <ul>
         <?php
         while ($data = $users->fetch()) {
-            echo "<tr><th>$data[id]</th>";
-            echo "<th>$data[login]</th>";
-            echo "<th>$data[email]</th>";
-            echo "<th>$data[droits]</th>";
-            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Supprimer un utilisateur</a></th></tr>";
-            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Modifier un utilisateur</a></th></tr>";
+            echo "<tr><th>$data[id]</th>
+            <th>$data[login]</th>
+             <th>$data[email]</th>
+             <th>$data[droits]</th>
+             <th><a href=\"admin-profil.php?id=$data[id]\">Supprimer cet utilisateur</a></th></tr>
+             <th><a href=\"admin-profil.php?id=$data[id]\">Modifier cet utilisateur</a></th></tr>";
         }
         while ($data = $article->fetch()) {
             echo "<tr><th>$data[id]</th>";
@@ -59,16 +49,16 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC');
             echo "<th>$data[article]</th>";
             echo "<th>$data[id_utilisateur]</th>";
             echo "<th>$data[id_categorie]</th>";
-            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Supprimer un article</a></th></tr>";
-            echo "<th><a href=\"admin-profil.php.php?id=$data[id]\">Modifier un article</a></th></tr>";
+            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Supprimer cet article</a></th></tr>";
+            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Modifier cet article</a></th></tr>";
         }
         while ($data = $com->fetch()) {
             echo "<tr><th>$data[id]</th>";
             echo "<th>$data[commentaire]</th>";
             echo "<th>$data[id_article]</th>";
             echo "<th>$data[id_utilisateur]</th>";
-            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Supprimer un commentaire</a></th></tr>";
-            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Modifier un commentaire</a></th></tr>";
+            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Supprimer ce commentaire</a></th></tr>";
+            echo "<th><a href=\"admin-profil.php?id=$data[id]\">Modifier ce commentaire</a></th></tr>";
         }
         ?>
 </body>
