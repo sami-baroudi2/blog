@@ -6,13 +6,7 @@ if (!isset($_SESSION['id']) and $_SESSION['id'] != 3) // Seul l'admin peut accé
     header('Location: ../index.php');
     die();
 }
-<<<<<<< HEAD
 if (isset($_GET['delete']) and !empty($_GET['delete'])) {
-=======
-// Pour supprimer un utilisateur. 🗑️
-if(isset($_GET['delete']) AND !empty($_GET['delete']))
-{
->>>>>>> 2513669fac97dae7215d21de77468c80b43e528f
     $delete = (int) $_GET['delete'];
     $requete = $db->prepare('DELETE FROM `utilisateurs` WHERE id = ?');
     $requete->execute(array($delete));
