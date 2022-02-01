@@ -84,3 +84,28 @@ input
   .bn30:hover .text {
     background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
   }
+  .articles-title
+  {
+    display: flex;
+    justify-content: center;
+  }
+  .forgot
+  {
+    color: black;
+  }
+  .footer
+  {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 4vh;
+    width: 100%;
+    background-color: #0e0e10;
+  }
+  .footer-all-page
+  {
+    height: 96vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
