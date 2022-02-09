@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!-- Page par Jul -->
-
+<!-- Page par Sami -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,16 +10,27 @@
     <link rel="stylesheet" href="../CSS/blog.css">
     <title>Connexion</title>
 </head>
-
 <body>
+<div class=" container-fluid gray">
+      <header>
+        <?php
+        include ("header2.php");
+        ?>
+        </header>      
+      </div>
     <main>
-        <h1 class="connexion-titre">Connexion</h1><br />
+        <div class="background">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <p1 class="connexion-titre">Connexion</p1><br />
         <div class="zone">
             <div class="formulaire-de-co">
                 <?php
-                if (isset($_GET["login_erreur"])) {
+                if (isset($_GET["login_erreur"]))
+                {
                     $error = $_GET["login_erreur"];
-                    switch ($error) {
+                    switch ($error)
+                    {
                         case 'empty':
                 ?>
                             <div class="erreur">
@@ -41,15 +51,19 @@
                 <form action="TREATMENT/connexion_treatment.php" method="post">
                     <label for="login">Login</label>
                     <input type="text" name="login" required><br><br>
-                    <label for="password">Password</label>
+                    <label for="password">Mot de passe</label>
                     <input type="password" name="password" required><br><br>
-                    <input type="submit" name="BtnCo" value="connexion">
-                    <p><a class="forgot" href="forgot_password.php">Forgot your password ?</a></p>
+                    <input class="boutton" type="submit" name="BtnCo" value="Connexion">
+                    <p class="forgot"><a href="forgot_password.php">Mot de passe oublié ?</a></p>
             </div>
             </form>
         </div>
         </div>
     </main>
+    <footer>
+            <?php
+            include('footer.php');
+            ?>
+            </footer>
 </body>
-
 </html>
