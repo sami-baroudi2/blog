@@ -429,6 +429,7 @@ input
     justify-content: center;
     align-items: center;
     margin-top: 7%;
+    border-radius: 10%;
     border: solid;
     width: 500px;
     height: 665px;
@@ -436,6 +437,24 @@ input
     position: relative;
 }
 .zone
+{
+    display: flex;
+    justify-content: center;
+}
+.formulaire-article
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7%;
+    border: solid;
+    width: 500px;
+    height: 465px;
+    color: white;
+    border-radius: 20%;
+    position: relative;
+}
+.zone-create-article
 {
     display: flex;
     justify-content: center;
@@ -524,7 +543,7 @@ input
   }
   .titre-index-zone
   {
-    height: 70%;
+    height: auto;
     width: 100%;
     margin-top: 40px;
     display: flex;
@@ -544,3 +563,36 @@ input
     font-size: 30px;
     font-family: "ubuntucondensed";
   }
+  .titre-articles-zone2
+  {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    height: 840px;
+    width: 100%;
+  }
+  .titre-articles2
+  {
+    color: white;
+    font-size: 25px;
+    font-family: "ubuntucondensed";
+  }
+  .erreur
+  {
+    background-color:crimson;
+  }
+  .erreur-session
+  {
+    position: absolute;
+    color: white;
+  }
+  .erreur-create-article
+{
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  border: 2px solid #666;
+  width: auto;
+  position: inherit;
+  color: blanchedalmond;
+}
