@@ -1,7 +1,21 @@
 <?php
 // Page par Jul
 require_once('configuration.php');
-$articles = $db->query('SELECT * FROM `articles` ORDER BY `id` DESC LIMIT 5');
+// Pagination
+$articles_par_page = 5; // Le nom de la variable veut tout dire.
+$allArticlesRequest = $db->query('SELECT * FROM `articles` ORDER BY `id` DESC LIMIT 5');
+$articles = $allArticlesRequest->rowCount();
+$allPages = ceil($articles/$articles_par_page);
+if(isset($GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0)
+{
+  $_GET['page'] = intval($_GET['page']);
+  $pageActuelle = $_GET['page'];
+}
+else
+{
+  $pageActuelle = 1;
+}
+$start = ($pageActuelle-1)*$articles_par_page;
 ?>
 <!-- HTML -->
 <!DOCTYPE html>
@@ -27,26 +41,49 @@ $articles = $db->query('SELECT * FROM `articles` ORDER BY `id` DESC LIMIT 5');
       <div class="background">
         <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
-    </head>
-    <body>
-      <div class="titre-articles-zone2">
-        <ul class="titre-articles2">
-          <?php while ($data = $articles->fetch())
-          {
-            ?>
-            <li><strong><?= $data['title'] ?></strong></li>
-            <h1><?= $data['article'] ?></h1>
-            <p1
-            <?php
-            }
-            ?>
-            </ul>
+      <body>
+        <article>
+          <div class="table-wrapper">
+            <table class="fl-table">
+              <thead>
+                <tr>
+                  <th>Titre</th>
+                  <th>Article</th>
+                  <th>Commentaire</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $articles = $db->query('SELECT * FROM `articles` ORDER BY `id` DESC LIMIT '.$start.','.$articles_par_page);
+                while ($data = $articles->fetch())
+                {
+                  ?>
+                  <tr>
+                    <td><?php echo $data['title']; ?></td>
+                    <td><?php echo $data['article']; ?></td>
+                  </tr>
+              </tbody>
+              <?php
+              }
+              ?>
+              <?php
+              for($pagination=1;$pagination<=$allPages;$pagination++)
+              if($pagination == $pageActuelle)
+              {
+                echo $pagination.' ';
+              }
+              else
+              {
+                echo '<a href="articles.php?page='.$pagination.'">'.$pagination.'</a>';
+              }
+              ?>
+            </table>
           </div>
-        </main>
+        </article>
         <footer>
           <?php
           include('footer2.php');
           ?>
           </footer>
-        </body>
+      </body>
 </html>
