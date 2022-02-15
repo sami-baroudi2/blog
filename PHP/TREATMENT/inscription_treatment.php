@@ -12,7 +12,7 @@ if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['conf
     $email = stripslashes($_POST['email']);
     $email = htmlspecialchars($email);
 
-    $password = stripslashes($_POST['password']);
+    $password = stripslashes($_POST['password'],);
     $password = htmlspecialchars($password);
 
     $confirmation = stripslashes($_POST['confirmation']);
@@ -45,16 +45,16 @@ if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['conf
 
 
                     if ($login == ("sami" || "julien")) {
-                        $droits = "42";
+                        $droits = "1";
                         $result->bindValue(':droits', $droits);
                     } else {
-                        $droits = "1";
+                        $droits = "42";
                         $result->bindValue(':droits', $droits);
                     }
                     $result->execute();
                     $_SESSION['login'] = "$login";
 
-                    header('Location: ../index_connexion.php?login_err=success');
+                    header('Location: index_register.php?login_err=success');
                 } else {
                     header('Location:../inscription.php?inscription_err=password');
                 }
