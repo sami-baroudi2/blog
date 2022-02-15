@@ -1,6 +1,0 @@
-<FilesMatch "admin.php">
-AuthName "Page administration"
-AuthType Basic
-AuthUserFile "C:\xampp\htdocs\blog\paneladmin\admin\.htpasswd"
-Require valid-user
-</FIlesMatch>
