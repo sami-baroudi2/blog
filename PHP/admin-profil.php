@@ -24,7 +24,7 @@ $grabID=$_GET['id'];
         }
         else
         {
-            echo "Tu dois remplir tous les champs !"; // Le message des champs oubliés.
+            echo '<div class="erreur-create-article">Tu dois remplir tous les champs !'; // Le message des champs oubliés.
         }
     }
 ?>
