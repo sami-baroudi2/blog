@@ -3,7 +3,7 @@
 <?php // PHP
 session_start(); // Ouverture de session.
 require_once('configuration.php'); // Connexion DB avec PDO.
-$edit = $db->query('SELECT * FROM `utilisateurs` WHERE id'); // Je sélectionne les utilisateurs et les membres les plus récents.
+$edit = $db->query('SELECT * FROM `utilisateurs` WHERE id'); // Je sélectionne les membres.
 if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéder à cette page. ⛔👮
 {
     header('Location: ../index.php'); // Redirection vers l'index si ce n'est pas l'admin ou si aucune session est active.
