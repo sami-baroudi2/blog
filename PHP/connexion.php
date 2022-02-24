@@ -14,7 +14,7 @@
 <div class=" container-fluid gray">
       <header>
         <?php
-        include ("header2.php");
+        include ("header-co.php");
         ?>
         </header>      
       </div>
@@ -33,16 +33,18 @@
                     {
                         case 'empty':
                 ?>
-                            <div class="erreur">
+                </div>
+        </div>
+                            <p1 class="erreur">
                                 Tous champs doivent être remplis pour procéder à l'inscription.
-                            </div>
+                            </p1>
                         <?php
                             break;
                         case 'login':
                         ?>
-                            <div class="erreur">
+                            <p1 class="erreur">
                                 Le login ou le mot de passe est incorrect.
-                            </div>
+                            </p1>
                 <?php
                             break;
                     }
@@ -55,14 +57,11 @@
                     <input type="password" name="password" required><br><br>
                     <input class="boutton" type="submit" name="BtnCo" value="Connexion">
                     <p class="forgot"><a href="forgot_password.php">Mot de passe oublié ?</a></p>
-            </div>
             </form>
-        </div>
-        </div>
     </main>
     <footer>
             <?php
-            include('footer.php');
+            include('footer2.php');
             ?>
             </footer>
 </body>

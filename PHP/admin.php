@@ -7,16 +7,16 @@ if (!isset($_SESSION['id']) and $_SESSION['id'] != 3) // Seul l'admin peut accé
     die();
 }
 // Pour supprimer un utilisateur.
-if (isset($_GET['delete']) and !empty($_GET['delete']))
+if (isset($_GET['delete-user']) and !empty($_GET['delete-user']))
 {
-    $delete = (int) $_GET['delete'];
+    $delete = (int) $_GET['delete-user'];
     $requete = $db->prepare('DELETE FROM `utilisateurs` WHERE id = ?');
     $requete->execute(array($delete));
 }
 // Pour supprimer un article.
-if (isset($_GET['delete']) and !empty($_GET['delete']))
+if (isset($_GET['delete-article']) and !empty($_GET['delete-article']))
 {
-    $delete = (int) $_GET['delete'];
+    $delete = (int) $_GET['delete-article'];
     $requete = $db->prepare('DELETE FROM `articles` WHERE id = ?');
     $requete->execute(array($delete));
 }
@@ -62,7 +62,7 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
                 while ($data = $users->fetch())
                 {
                   echo"<tr>
-                  <td>" . $data['login'] ."<a href=\"admin.php?delete=$data[id]\">Supprimer</a> <a href=\"admin-profil.php?id=$data[id]\">Modifier</a></td>";
+                  <td>" . $data['login'] ."<a href=\"admin.php?delete-user=$data[id]\">Supprimer</a> <a href=\"admin-profil.php?id=$data[id]\">Modifier</a></td>";
                   echo"<td>" . $data['email'] ."</td>";
                   echo"<td>" . $data['droits'] ."</td>
                   </tr>";
@@ -84,7 +84,7 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
                 while ($data = $article->fetch())
                 {
                   echo"<tr>
-                  <td>" . $data['title'] ."<a href=\"admin.php?delete=$data[id]\">Supprimer</a> <a href=\"admin-profil.php?id=$data[id]\">Modifier</a></td>";
+                  <td>" . $data['title'] ."<a href=\"admin.php?delete-article=$data[id]\">Supprimer</a> <a href=\"admin-article-edit.php?id=$data[id]\">Modifier</a></td>";
                   echo"<td>" . $data['article'] ."</td>";
                   echo"<td>" . $data['id_categorie'] ."</td>
                   </tr>";

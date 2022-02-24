@@ -18,7 +18,7 @@ if(isset($_POST['submit']))
         echo $title.";".$article.';'.$id_categorie.';'.$_SESSION['id'];
         $insertData = $db->prepare('INSERT INTO `articles`(`title`, `article`, `id_utilisateur`, `id_categorie`, `date`) VALUES (?, ?, ?, ?, NOW())');
         $insertData->execute(array($title, $article,$id_session,$id_categorie));   
-        echo 'Article posté!'; // Message si l'article à été posté avec succès.
+        echo '<div class="erreur-create-article">Article posté!</div>'; // Message si l'article à été posté avec succès.
     }
     else
     {

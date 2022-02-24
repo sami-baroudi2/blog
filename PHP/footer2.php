@@ -10,8 +10,8 @@
 <body>
     <div class="footer-all-page">
         <div class="footer">
-            <a class='nav-link text-light' href="PHP/articles.php">Les articles</a>
-            <a class='nav-link text-light' href="PHP/creer-article.php">Créer un article</a>
+            <a class='nav-link text-light' href="articles.php">Les articles</a>
+            <a class='nav-link text-light' href="creer-article.php">Créer un article</a>
             <a class='nav-link text-light' href="https://github.com/sami-baroudi2/blog">Code source</a>
         </div>
     </div>

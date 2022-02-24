@@ -3,10 +3,10 @@
 require_once('configuration.php');
 // Pagination
 $articles_par_page = 5; // Le nom de la variable veut tout dire.
-$allArticlesRequest = $db->query('SELECT * FROM `articles` ORDER BY `id` DESC LIMIT 5');
+$allArticlesRequest = $db->query('SELECT * FROM `articles` ORDER BY `id`');
 $articles = $allArticlesRequest->rowCount();
 $allPages = ceil($articles/$articles_par_page);
-if(isset($GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0)
+if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $allPages)
 {
   $_GET['page'] = intval($_GET['page']);
   $pageActuelle = $_GET['page'];
@@ -68,13 +68,15 @@ $start = ($pageActuelle-1)*$articles_par_page;
               ?>
               <?php
               for($pagination=1;$pagination<=$allPages;$pagination++)
-              if($pagination == $pageActuelle)
               {
-                echo $pagination.' ';
-              }
-              else
-              {
-                echo '<a href="articles.php?page='.$pagination.'">'.$pagination.'</a>';
+                if($pagination == $pageActuelle)
+                {
+                  echo $pagination.' ';
+                }
+                else
+                {
+                  echo '<a href="articles.php?page='.$pagination.'">'.$pagination.'</a>';
+                }
               }
               ?>
             </table>
