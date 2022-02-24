@@ -1,4 +1,5 @@
 <?php
+// Page par Sami
 require("../configuration.php");
 $message = '';
 if (isset($_POST['BtnResetPwd'])) {
