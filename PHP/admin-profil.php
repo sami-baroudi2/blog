@@ -2,15 +2,14 @@
 <!-- Page par Jul -->
 <?php
 session_start();
-$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
+require_once('configuration.php');
 $edit = $db->query('SELECT * FROM `utilisateurs` WHERE id'); // Je sélectionne les utilisateurs et les membres les plus récents.
-$test = $_GET['id'];
-var_dump($test);
 if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéder à cette page. ⛔👮
 {
     header('Location: ../index.php');
     die();
 }
+$grabID=$_GET['id'];
     if(isset($_POST['Modifier']))
     {
         if(!empty($_POST['login']) AND !empty($_POST['password']) AND !empty ($_POST['email']) AND !empty ($_POST['droits'])) // Avec else, il va afficher un message si des champs ont étés oubliés.
@@ -19,8 +18,8 @@ if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéd
             $email = htmlspecialchars($_POST['email']); // 'htmlspecialchars' une petite sécurité pour éviter d'écrire du HTML sur les champs.
             $droits = ($_POST['droits']);
             $password = sha1($_POST['password']);
-            $insertData = $db->prepare('UPDATE `utilisateurs` SET `login`= ? ,`email`= ? ,`droits`= ? ,`password`= ? WHERE id=$edit'); // La commande utilisée qui va modifier l'user dans la BDD.
-            $insertData->execute(array($login,$email,$droits,$password,$edit['id'])); // Il va exécuter la commande.
+            $insertData = $db->prepare('UPDATE `utilisateurs` SET `login`= ? ,`email`= ? ,`droits`= ? ,`password`= ? WHERE id=?'); // La commande utilisée qui va modifier l'user dans la BDD.
+            $insertData->execute(array($login,$email,$droits,$password,$grabID)); // Il va exécuter la commande.
             echo "Les informations ont bien étés modifiées " . $login . " !"; // Message que la modification à bien été prise en compte.
         }
         else
@@ -46,7 +45,7 @@ if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéd
             <div class="formulaire-update-profile">
                 <ul class="session-affiche">
                     </ul>
-                    <form method="POST" action="profil.php" align="center">
+                    <form method="POST" action=<?php "admin-profil.php?id=$grabID=$_GET[id]" ?>>
                         <input type="text" name="login" placeholder="Un nouveau psuedo...">Login :<br /></input>
                         <input type="text" name="email" placeholder="Une nouvelle adresse e-m@il...">e-mail :<br /></input>
                         <input type="password" name="password">Mot de passe :<br /></input>
