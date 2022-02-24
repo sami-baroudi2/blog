@@ -1,18 +1,18 @@
 <meta charset="utf-8" />
 <!-- Page par Jul -->
-<?php
-session_start();
-require_once('configuration.php');
+<?php // PHP
+session_start(); // Ouverture de session.
+require_once('configuration.php'); // Connexion DB avec PDO.
 $edit = $db->query('SELECT * FROM `utilisateurs` WHERE id'); // Je sélectionne les utilisateurs et les membres les plus récents.
 if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéder à cette page. ⛔👮
 {
-    header('Location: ../index.php');
+    header('Location: ../index.php'); // Redirection vers l'index si ce n'est pas l'admin ou si aucune session est active.
     die();
 }
-$grabID=$_GET['id'];
+$grabID=$_GET['id']; // Il va récupérer l'utilisateur sélectionné.
     if(isset($_POST['Modifier']))
     {
-        if(!empty($_POST['login']) AND !empty($_POST['password']) AND !empty ($_POST['email']) AND !empty ($_POST['droits'])) // Avec else, il va afficher un message si des champs ont étés oubliés.
+        if(!empty($_POST['login']) AND !empty($_POST['password']) AND !empty ($_POST['email']) AND !empty ($_POST['droits']))
         {
             $login = htmlspecialchars($_POST['login']);
             $email = htmlspecialchars($_POST['email']); // 'htmlspecialchars' une petite sécurité pour éviter d'écrire du HTML sur les champs.
