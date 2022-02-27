@@ -20,7 +20,7 @@ $grabID=$_GET['id']; // Il va récupérer l'utilisateur sélectionné.
             $password = sha1($_POST['password']);
             $insertData = $db->prepare('UPDATE `utilisateurs` SET `login`= ? ,`email`= ? ,`droits`= ? ,`password`= ? WHERE id=?'); // La commande utilisée qui va modifier l'user dans la BDD.
             $insertData->execute(array($login,$email,$droits,$password,$grabID)); // Il va exécuter la commande.
-            echo "Les informations ont bien étés modifiées " . $login . " !"; // Message que la modification à bien été prise en compte.
+            echo '<div class="erreur-create-article">Les informations ont bien étés mises à jour !'; // Message que la modification à bien été prise en compte.
         }
         else
         {
@@ -39,29 +39,38 @@ $grabID=$_GET['id']; // Il va récupérer l'utilisateur sélectionné.
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Modifier son profil (Admin) - Blog</title>
     </head>
-    <main>
-        <p1>Modifier le profil</p1><br />
-        <div class="zone">
-            <div class="formulaire-update-profile">
-                <ul class="session-affiche">
-                    </ul>
+    <body>
+        <div class="container-fluid gray">
+            <header>
+                <?php
+                include ("header-admin-profil.php");
+                ?>
+            </header>      
+        </div>
+        <main>
+            <p1>Modifier le profil</p1><br />
+            <div class="zone">
+                 <!-- Formulaire -->
+                <div class="formulaire-update-profile-admin">
                     <form method="POST" action=<?php "admin-profil.php?id=$grabID=$_GET[id]" ?>>
-                        <input type="text" name="login" placeholder="Un nouveau psuedo...">Login :<br /></input>
-                        <input type="text" name="email" placeholder="Une nouvelle adresse e-m@il...">e-mail :<br /></input>
-                        <input type="password" name="password">Mot de passe :<br /></input>
-                        <select name="droits" class="deroulant-choix-catego">
-                            <option value="">--Droit à attribuer--</option>
-                            <option value="1">Utilisateur</option>
-                            <option value="42">Modérateur</option>
-                            <option value="1337">Administrateur</option>
-                        </select><br />
+                        <input class="form-admin-edit-profile" type="text" name="login" placeholder="Nouveau psuedo..."><br /></input>
+                        <input class="form-admin-edit-profile" type="text" name="email" placeholder="Nouvelle adresse e-m@il..."><br /></input>
+                        <input class="form-admin-edit-profile" type="password" name="password" placeholder="Nouveau mot de passe..."><br /></input>
+                            <select name="droits" class="deroulant-choix-catego">
+                                <option value="">--Droit à attribuer--</option>
+                                <option value="1">Utilisateur</option>
+                                <option value="42">Modérateur</option>
+                                <option value="1337">Administrateur</option>
+                            </select><br />
                         <input class="edit" type="submit" value="Modifier" name="Modifier"></input>
                     </form>
                 </div>
             </div>
         </main>
         <footer>
-            <a href="https://github.com/sami-baroudi2/blog"><img class="GitHub" src="images/GitHub_Logo.png" alt="logo"></img></a>
+            <?php
+            include('footer2.php');
+            ?>
         </footer>
     </body>
 </html>
