@@ -763,3 +763,39 @@ h2
 {
   color: #000;
 }
+/* Formulaire admin profil */
+input[type=text], input[type=password], select
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.edit
+{
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.edit:hover
+{
+  background-color: #45a049;
+}
+.formulaire-update-profile-admin
+{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.form-admin-edit-profile
+{
+  color: white;
+}
