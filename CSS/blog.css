@@ -441,19 +441,6 @@ input
   display: flex;
   justify-content: center;
 }
-.formulaire-article
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7%;
-  border: solid;
-  width: 500px;
-  height: 465px;
-  color: white;
-  border-radius: 20%;
-  position: relative;
-}
 .zone-create-article
 {
   display: flex;
@@ -514,6 +501,10 @@ input
 {
   color: black;
 }
+footer
+{
+  bottom: 0;
+}
 .footer
 {
   display: flex;
@@ -521,15 +512,8 @@ input
   justify-content: space-around;
   position: relative;
   width: 100%;
+  bottom: 0;
   background-color: #0e0e10;
-}
-.footer-all-page
-{
-  height: auto;
-  width: 100%;
-  position: absolute;
-  display: flex;
-  align-items: flex-end;
 }
 .titre-index
 {
@@ -555,7 +539,7 @@ input
   display: flex;
   margin-top: 40px;
   justify-content: center;
-  height: 750px;
+  height: auto;
   width: 100%;
 }
 .titre-articles
@@ -763,11 +747,11 @@ h2
 {
   color: #000;
 }
-/* Formulaire admin profil */
+/* Formulaire */
 input[type=text], input[type=password], select
 {
   width: 100%;
-  padding: 12px 20px;
+  padding: 12px 50px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid rgb(255, 255, 255);
@@ -791,11 +775,21 @@ input[type=text], input[type=password], select
 }
 .formulaire-update-profile-admin
 {
-  border-radius: 5px;
+  margin-top: 10%;
+  border-radius: 10px;
   background-color: #f2f2f2;
   padding: 20px;
 }
 .form-admin-edit-profile
+{
+  color: white;
+}
+/* Auto bottom footer */
+.admin-profil-page, .index-page, .admin-page, .profil-page, .articles-page
+{
+  min-height: calc(96.3vh - 40px - 40px);
+}
+.session-affiche
 {
   color: white;
 }
