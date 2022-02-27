@@ -37,9 +37,12 @@ $start = ($pageActuelle-1)*$articles_par_page;
         ?>
       </header>      
     </div>
-    <main>
+    <main class="articles-page">
       <div class="background">
         <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="titre-index-zone">
+        <p1 class="titre-index">Les articles :</p1><br />
       </div>
       <body>
         <article>
@@ -75,17 +78,20 @@ $start = ($pageActuelle-1)*$articles_par_page;
                 }
                 else
                 {
-                  echo '<a href="articles.php?page='.$pagination.'">'.$pagination.'</a>';
+                  echo '<a class="pagination-links" href="articles.php?page='.$pagination.'">'.$pagination.'</a>';
                 }
               }
               ?>
             </table>
           </div>
         </article>
-        <footer>
-          <?php
-          include('footer2.php');
-          ?>
-          </footer>
-      </body>
+    </main>
+    <footer>
+      <div class="container-fluid gray">
+        <?php
+        include("footer2.php");
+        ?>
+      </div>
+    </footer>
+  </body>
 </html>
