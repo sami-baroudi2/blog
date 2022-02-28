@@ -37,7 +37,7 @@ $start = ($pageActuelle-1)*$articles_par_page;
         ?>
       </header>      
     </div>
-    <main class="articles-page">
+    <main class="footer-auto-bottom">
       <div class="background">
         <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
@@ -78,7 +78,9 @@ $start = ($pageActuelle-1)*$articles_par_page;
                 }
                 else
                 {
-                  echo '<a class="pagination-links" href="articles.php?page='.$pagination.'">'.$pagination.'</a>';
+                  echo '<div class="pagination-links">
+                  <a class="active" href="articles.php?page='.$pagination.'">'.$pagination.'</a>
+                  </div>';
                 }
               }
               ?>

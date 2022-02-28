@@ -40,17 +40,22 @@ $grabID=$_GET['id']; // Il va récupérer l'utilisateur sélectionné.
         <title>Modifier son profil (Admin) - Blog</title>
     </head>
     <body>
-        <div class="container-fluid gray">
-            <header>
+        <header>
+            <div class="container-fluid gray">
                 <?php
                 include ("header-admin-profil.php");
-                ?>
-            </header>      
-        </div>
-        <main>
-            <p1>Modifier le profil</p1><br />
+                ?>     
+            </div>
+        </header> 
+        <main class="footer-auto-bottom">
+            <div class="background">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="titre-index-zone">
+                <p1 class="titre-index">Modifier le profil</p1><br />
+            </div>
             <div class="zone">
-                 <!-- Formulaire -->
+                <!-- Formulaire -->
                 <div class="formulaire-update-profile-admin">
                     <form method="POST" action=<?php "admin-profil.php?id=$grabID=$_GET[id]" ?>>
                         <input class="form-admin-edit-profile" type="text" name="login" placeholder="Nouveau psuedo..."><br /></input>
@@ -68,9 +73,11 @@ $grabID=$_GET['id']; // Il va récupérer l'utilisateur sélectionné.
             </div>
         </main>
         <footer>
-            <?php
-            include('footer2.php');
-            ?>
+            <div class="container-fluid gray">
+                <?php
+                include("footer2.php");
+                ?>
+            </div>
         </footer>
     </body>
 </html>

@@ -47,7 +47,7 @@ if(isset($_POST['submit']))
         ?>
         </header>      
       </div>
-      <main>
+      <main class="footer-auto-bottom">
         <div class="background">
           <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>

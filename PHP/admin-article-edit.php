@@ -47,7 +47,7 @@ $grabID=$_GET['id']; // Il va récupérer l'article sélectionné.
         ?>
         </header>      
       </div>
-      <main>
+      <main class="footer-auto-bottom">
         <div class="background">
           <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>

@@ -43,7 +43,7 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
           ?>
         </header>      
       </div>
-      <main>
+      <main class="footer-auto-bottom">
         <div class="titre-index-zone">
           <p1 class="titre-index">Liste des articles, commentaires, utilisateurs</p1><br />
         </div>
@@ -93,8 +93,14 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
               </tbody>
             </table>
           </div>
-
         </article>
       </main>
+      <footer>
+        <div class="container-fluid gray">
+          <?php
+          include("footer2.php");
+          ?>
+        </div>
+      </footer>
     </body>
 </html>
