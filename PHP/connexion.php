@@ -18,13 +18,13 @@
         ?>
         </header>      
       </div>
-    <main>
+    <main class="footer-auto-bottom">
         <div class="background">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
         <p1 class="connexion-titre">Connexion</p1><br />
         <div class="zone">
-            <div class="formulaire-de-co">
+            <div class="formulaire-update-profile-admin">
                 <?php
                 if (isset($_GET["login_erreur"]))
                 {
@@ -52,9 +52,9 @@
                 ?>
                 <form action="TREATMENT/connexion_treatment.php" method="post">
                     <label for="login">Login</label>
-                    <input type="text" name="login" required><br><br>
+                    <input class="form-admin-edit-profile" type="text" name="login" required><br><br>
                     <label for="password">Mot de passe</label>
-                    <input type="password" name="password" required><br><br>
+                    <input class="form-admin-edit-profile" type="password" name="password" required><br><br>
                     <input class="boutton" type="submit" name="BtnCo" value="Connexion">
                     <p class="forgot"><a href="forgot_password.php">Mot de passe oublié ?</a></p>
             </form>

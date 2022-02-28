@@ -45,7 +45,7 @@ if(isset($_POST['Modifier']))
                 ?>
             </header>      
         </div>
-        <main>
+        <main class="footer-auto-bottom">
             <div class="background">
                 <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
@@ -59,12 +59,14 @@ if(isset($_POST['Modifier']))
                         echo "<b>Login actuel : " . $_SESSION['login'] . "</b>";
                         ?>
                     </ul>
+                    <div class="formulaire-update-profile-admin">
                     <form method="POST" action="profil.php" align="center">
-                        <input type="text" name="login" placeholder="Un nouveau psuedo...">Login :<br /></input>
-                        <input type="text" name="email" placeholder="Une nouvelle adresse e-m@il...">e-mail :<br /></input>
-                        <input type="password" name="password">Mot de passe :<br /></input>
+                    <input class="form-admin-edit-profile" type="text" name="login" placeholder="Nouveau psuedo..."><br /></input>
+                        <input class="form-admin-edit-profile" type="text" name="email" placeholder="Nouvelle adresse e-m@il..."><br /></input>
+                        <input class="form-admin-edit-profile" type="password" name="password" placeholder="Nouveau mot de passe..."><br /></input>
                         <input class="edit" type="submit" value="Modifier" name="Modifier"></input>
                     </form>
+                </div>
                 </div>
             </div>
         </main>
