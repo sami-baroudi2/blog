@@ -423,19 +423,6 @@ input
 {
   display: flex;
 }
-.formulaire-de-co
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7%;
-  border-radius: 10%;
-  border: solid;
-  width: 500px;
-  height: 665px;
-  color: white;
-  position: relative;
-}
 .zone
 {
   display: flex;
@@ -777,7 +764,7 @@ input[type=text], input[type=password], select
 {
   margin-top: 10%;
   border-radius: 10px;
-  background-color: #f2f2f2;
+  background-color: #8a8080;
   padding: 20px;
 }
 .form-admin-edit-profile
@@ -785,11 +772,33 @@ input[type=text], input[type=password], select
   color: white;
 }
 /* Auto bottom footer */
-.admin-profil-page, .index-page, .admin-page, .profil-page, .articles-page
+.footer-auto-bottom
 {
   min-height: calc(96.3vh - 40px - 40px);
 }
 .session-affiche
 {
   color: white;
+}
+/* Pagination */
+.pagination-links
+{
+  display: inline-block;
+}
+.pagination-links a
+{
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+.pagination-links a.active
+{
+  background-color: #4CAF50;
+  color: white;
+}
+.pagination-links a:hover:not(.active)
+{
+  background-color: #ddd;
 }
