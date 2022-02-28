@@ -19,74 +19,76 @@
             </header>      
         </div>
         <main class="footer-auto-bottom">
-        <div class="background">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-        </div>
-        <p1 class="connexion-titre">Inscription</p1><br />
-        <div class="zone">
-            <div class="formulaire-de-co">
-                <?php
-                if (isset($_GET["inscription_err"]))
-                {
-                    $error = $_GET["inscription_err"];
-                    switch ($error)
+            <div class="background">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="titre-index-zone">
+                <p1 class="connexion-titre">inscription</p1><br />
+            </div>
+            <div class="zone">
+                <div class="formulaire-update-profile-admin">
+                    <?php
+                    if (isset($_GET["inscription_err"]))
                     {
-                        case 'empty':
-                        ?>
-                        <div class="erreur">
-                            Tous champs doivent être remplis pour procéder à l'inscription.
-                        </div>
-                        <?php
-                        break;
-                        case 'alreadymail':
-                        ?>
-                        <div class="erreur">
-                            Cette adresse possède déjà un compte enregistré.
-                        </div>
-                        <?php
-                        break;
-                        case 'email':
-                        ?>
-                        <div class="erreur">
-                            Veuillez saisir une adresse mail valide.
-                        </div>
-                        <?php
-                        break;
-                        case 'already':
-                        ?>
-                        <div class="erreur">
-                            Ce nom d'utilisateur (login) est déjà attribué.
-                        </div>
-                        <?php
-                        break;
-                        case 'password':
-                        ?>
-                        <div class="erreur">
-                            Veuillez saisir deux mots de passes identiques.
-                        </div>
-                        <?php
-                        break;
+                        $error = $_GET["inscription_err"];
+                        switch ($error)
+                        {
+                            case 'empty':
+                            ?>
+                            <div class="erreur">
+                                Tous champs doivent être remplis pour procéder à l'inscription.
+                            </div>
+                            <?php
+                            break;
+                            case 'alreadymail':
+                            ?>
+                            <div class="erreur">
+                                Cette adresse possède déjà un compte enregistré.
+                            </div>
+                            <?php
+                            break;
+                            case 'email':
+                            ?>
+                            <div class="erreur">
+                                Veuillez saisir une adresse mail valide.
+                            </div>
+                            <?php
+                            break;
+                            case 'already':
+                            ?>
+                            <div class="erreur">
+                                Ce nom d'utilisateur (login) est déjà attribué.
+                            </div>
+                            <?php
+                            break;
+                            case 'password':
+                            ?>
+                            <div class="erreur">
+                                Veuillez saisir deux mots de passes identiques.
+                            </div>
+                            <?php
+                            break;
+                        }
                     }
-                }
-                ?>
-                <form action="TREATMENT/inscription_treatment.php" method="POST">
-                    <label for="login">Login</label>
-                    <input type="text" name="login"><br><br>
-                    <label for="mail">Adresse e-m@il</label>
-                    <input type="mail" name="email"><br><br>
-                    <label for="password">Mot de passe</label>
-                    <input type="password" name="password"><br><br>
-                    <label for="confirmation">Confirmation du mdp</label>
-                    <input type="password" name="confirmation"><br><br>
-                    <input class="boutton" type="submit" name="Btn-inscription" value="S'inscrire !">
+                    ?>
+                    <form action="TREATMENT/inscription_treatment.php" method="POST">
+                        <label for="login">Login</label>
+                        <input input class="form-admin-edit-profile" type="text" name="login"><br><br>
+                        <label for="mail">Adresse e-m@il</label>
+                        <input input class="form-admin-edit-profile" type="text" name="email"><br><br>
+                        <label for="password">Mot de passe</label>
+                        <input input class="form-admin-edit-profile" type="password" name="password"><br><br>
+                        <label for="confirmation">Confirmation du mdp</label>
+                        <input input class="form-admin-edit-profile" type="password" name="confirmation"><br><br>
+                        <input class="boutton" type="submit" name="Btn-inscription" value="S'inscrire !">
+                    </form>
                 </div>
-            </form>
-        </div>
-    </main>
-    <footer>
-        <?php
-        include('footer2.php');
-        ?>
+            </div>
+        </main>
+        <footer>
+            <?php
+            include('footer2.php');
+            ?>
         </footer>
     </body>
 </html>

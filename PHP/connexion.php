@@ -11,18 +11,20 @@
     <title>Connexion</title>
 </head>
 <body>
-<div class=" container-fluid gray">
-      <header>
-        <?php
-        include ("header-co.php");
-        ?>
+    <div class=" container-fluid gray">
+        <header>
+            <?php
+            include ("header-co.php");
+            ?>
         </header>      
-      </div>
+    </div>
     <main class="footer-auto-bottom">
         <div class="background">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
-        <p1 class="connexion-titre">Connexion</p1><br />
+        <div class="titre-index-zone">
+            <p1 class="titre-index">Connexion</p1><br />
+        </div>
         <div class="zone">
             <div class="formulaire-update-profile-admin">
                 <?php
@@ -33,36 +35,32 @@
                     {
                         case 'empty':
                 ?>
-                </div>
+            </div>
         </div>
-                            <p1 class="erreur">
-                                Tous champs doivent être remplis pour procéder à l'inscription.
-                            </p1>
-                        <?php
-                            break;
-                        case 'login':
-                        ?>
-                            <p1 class="erreur">
-                                Le login ou le mot de passe est incorrect.
-                            </p1>
-                <?php
-                            break;
-                    }
-                }
-                ?>
-                <form action="TREATMENT/connexion_treatment.php" method="post">
-                    <label for="login">Login</label>
-                    <input class="form-admin-edit-profile" type="text" name="login" required><br><br>
-                    <label for="password">Mot de passe</label>
-                    <input class="form-admin-edit-profile" type="password" name="password" required><br><br>
-                    <input class="boutton" type="submit" name="BtnCo" value="Connexion">
-                    <p class="forgot"><a href="forgot_password.php">Mot de passe oublié ?</a></p>
-            </form>
+        <p1 class="erreur">Tous champs doivent être remplis pour procéder à l'inscription.</p1>
+        <?php
+        break;
+        case 'login':
+        ?>
+        <p1 class="erreur">Le login ou le mot de passe est incorrect.</p1>
+        <?php
+        break;
+    }
+}
+        ?>
+        <form action="TREATMENT/connexion_treatment.php" method="post">
+            <label for="login">Login</label>
+            <input class="form-admin-edit-profile" type="text" name="login" required><br><br>
+            <label for="password">Mot de passe</label>
+            <input class="form-admin-edit-profile" type="password" name="password" required><br><br>
+            <input class="boutton" type="submit" name="BtnCo" value="Connexion">
+            <input class="boutton" a href="forgot_password.php" value="Mot de passe oublié ?"></a></p>
+        </form>
     </main>
     <footer>
-            <?php
-            include('footer2.php');
-            ?>
-            </footer>
-</body>
+        <?php
+        include('footer2.php');
+        ?>
+        </footer>
+    </body>
 </html>
