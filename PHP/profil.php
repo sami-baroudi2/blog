@@ -70,7 +70,7 @@ if(isset($_POST['Modifier']))
         </main>
         <footer>
             <?php
-            include('footer.php');
+            include('footer2.php');
             ?>
         </footer>
     </body>
