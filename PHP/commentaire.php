@@ -44,11 +44,11 @@ if (isset($_GET['id']))
 
             switch ($commentaire) {
                 case 'short':
-                    echo "Votre commentaire doit au minimum faire 5 caractères";
+                    echo '<p style="color : white;">ERREUR : Votre commentaire doit faire au minimum 5 caractères</p>';
                     break;
 
                 case 'empty':
-                    echo "Tout les champs doivent être remplis";
+                    echo '<p style="color : white;">ERREUR : Tout les champs doivent être remplis</p>';
                     break;
             }
         }

@@ -9,8 +9,9 @@ if (!isset($_SESSION['id'])) {
 $req = $db->prepare('SELECT * FROM utilisateurs WHERE id = ?');
 $req->execute(array($_SESSION['id']));
 $data = $req->fetch();
+$id_article = htmlspecialchars($_POST['id']);
     if (!empty($_POST['commentaire'])) {
-        $id_article = htmlspecialchars($_POST['id']);
+        
         $commentaire = trim(htmlspecialchars($_POST['commentaire']));
         if (strlen($commentaire) > 5) {
             $insert = $db->prepare('INSERT INTO commentaires(commentaire,id_article ,id_utilisateur,date) VALUES(?, ?, ?, NOW())');
