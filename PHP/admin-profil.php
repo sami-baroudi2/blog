@@ -4,7 +4,7 @@
 session_start(); // Ouverture de session.
 require_once('configuration.php'); // Connexion DB avec PDO.
 $edit = $db->query('SELECT * FROM `utilisateurs` WHERE id'); // Je sélectionne les membres.
-if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéder à cette page. ⛔👮
+if(!isset($_SESSION['login']) AND $_SESSION['login'] !== "admin") // Seul l'admin peut accéder à cette page. ⛔👮
 {
     header('Location: ../index.php'); // Redirection vers l'index si ce n'est pas l'admin ou si aucune session est active.
     die();
@@ -43,7 +43,7 @@ $grabID=$_GET['id']; // Il va récupérer l'utilisateur sélectionné.
         <header>
             <div class="container-fluid gray">
                 <?php
-                include ("header-admin-profil.php");
+                include ("header-admin.php");
                 ?>     
             </div>
         </header> 
@@ -58,7 +58,7 @@ $grabID=$_GET['id']; // Il va récupérer l'utilisateur sélectionné.
                 <!-- Formulaire -->
                 <div class="formulaire-update-profile-admin">
                     <form method="POST" action=<?php "admin-profil.php?id=$grabID=$_GET[id]" ?>>
-                        <input class="form-admin-edit-profile" type="text" name="login" placeholder="Nouveau psuedo..."><br /></input>
+                        <input class="form-admin-edit-profile" type="text" name="login" placeholder="Nouveau pseudo..."><br /></input>
                         <input class="form-admin-edit-profile" type="text" name="email" placeholder="Nouvelle adresse e-m@il..."><br /></input>
                         <input class="form-admin-edit-profile" type="password" name="password" placeholder="Nouveau mot de passe..."><br /></input>
                             <select name="droits" class="deroulant-choix-catego">

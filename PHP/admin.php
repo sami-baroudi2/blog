@@ -18,6 +18,11 @@ if (isset($_GET['delete-article']) and !empty($_GET['delete-article'])) {
   $requete = $db->prepare('DELETE FROM `articles` WHERE id = ?');
   $requete->execute(array($delete));
 }
+if (isset($_GET['delete-com']) and !empty($_GET['delete-com'])) {
+  $delete = (int) $_GET['delete-com'];
+  $requete = $db->prepare('DELETE FROM `commentaires` WHERE id = ?');
+  $requete->execute(array($delete));
+}
 $users = $db->query('SELECT * FROM `utilisateurs` ORDER BY id DESC'); // Je sélectionne les utilisateurs et je classe au + récent.
 $article = $db->query('SELECT * FROM `articles` ORDER BY id DESC'); // Je sélectionne les articles et je classe au + récent.
 $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélectionne les commentaires et je classe au + récent.
@@ -105,7 +110,7 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
             <?php
             while ($data = $com->fetch()) {
               echo "<tr>
-                  <td>" . $data['commentaire'] . "<a href=\"admin.php?delete-user=$data[id]\">Supprimer</a> <a href=\"admin-profil.php?id=$data[id]\">Modifier</a></td>";
+                  <td>" . $data['commentaire'] . "<a href=\"admin-edit-commentaire.php?delete-com=$data[id]\">Supprimer</a> <a href=\"admin-edit-commentaire.php?id=$data[id]\">Modifier</a></td>";
               echo "<td>" . $data['id_article'] . "</td>";
               echo "<td>" . $data['id_utilisateur'] . "</td>
                   </tr>";

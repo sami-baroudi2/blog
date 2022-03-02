@@ -3,17 +3,22 @@
 <?php // PHP
 session_start(); // Ouverture de session.
 require_once('configuration.php'); // Connexion DB avec PDO.
-$edit = $db->query('SELECT * FROM `articles` WHERE id'); // Je sélectionne les articles.
+$grabID=$_GET['id']; // Il va récupérer l'article sélectionné.
+$edit = $db->prepare('SELECT * FROM `articles` WHERE id = ?'); // Je sélectionne les articles.
+$edit->execute(array($grabID));
+$fetch = $edit->fetch();
 if(!isset($_SESSION['id']) AND $_SESSION['id'] != 3) // Seul l'admin peut accéder à cette page. ⛔👮
 {
     header('Location: ../index.php'); // Redirection vers l'index si ce n'est pas l'admin ou si aucune session est active.
     die();
 }
-$grabID=$_GET['id']; // Il va récupérer l'article sélectionné.
+
     if(isset($_POST['Modifier']))
     {
+        
         if(!empty($_POST['title']) AND !empty($_POST['article']) AND !empty ($_POST['id_categorie']))
         {
+
             $title = htmlspecialchars($_POST['title']);
             $article = htmlspecialchars($_POST['article']); // 'htmlspecialchars' une petite sécurité pour éviter d'écrire du HTML sur les champs.
             $id_categorie = ($_POST['id_categorie']);
@@ -57,9 +62,9 @@ $grabID=$_GET['id']; // Il va récupérer l'article sélectionné.
         <div class="zone-create-article">
             <div class="formulaire-article">
     <form method="POST" action=<?php "admin-article-edit.php?id=$grabID=$_GET[id]" ?>>
-        <input type="text" name="title" placeholder="Choisissez un titre"></input><br />
-        <input type="text" name="article" placeholder="Contenu de l'article"></input><br />
-        <select name="id_categorie" class="deroulant-choix-catego">
+        <input type="text" name="title" value="<?= $fetch['title']?>"></input><br />
+        <input type="text" name="article" value="<?= $fetch['article']?>"></input><br />
+        <select name="id_categorie" class="deroulant-choix-catego" required>
             <option value="null">--Choisissez la catégorie--</option>
             <option value="1">Catégorie 1</option>
             <option value="2">Catégorie 2</option>
