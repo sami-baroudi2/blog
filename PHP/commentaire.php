@@ -31,6 +31,21 @@ if (isset($_GET['id'])) {
         <div class="background">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
+        <?php
+        if (isset($_GET['commentaire'])) {
+            $commentaire = $_GET['commentaire'];
+
+            switch ($commentaire) {
+                case 'short':
+                    echo "Votre commentaire doit au minimum faire 5 caractères";
+                    break;
+
+                case 'empty':
+                    echo "Tout les champs doivent être remplis";
+                    break;
+            }
+        }
+        ?>
 
         <p1 class="connexion-titre">Commentaire</p1><br />
         <div class="zone">
