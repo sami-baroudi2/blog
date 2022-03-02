@@ -7,18 +7,22 @@ if (!isset($_SESSION['id']) and $_SESSION['id'] != 3) // Seul l'admin peut accé
   die();
 }
 // Pour supprimer un utilisateur.
-if (isset($_GET['delete-user']) and !empty($_GET['delete-user'])) {
+if (isset($_GET['delete-user']) and !empty($_GET['delete-user']))
+{
   $delete = (int) $_GET['delete-user'];
   $requete = $db->prepare('DELETE FROM `utilisateurs` WHERE id = ?');
   $requete->execute(array($delete));
 }
 // Pour supprimer un article.
-if (isset($_GET['delete-article']) and !empty($_GET['delete-article'])) {
+if (isset($_GET['delete-article']) and !empty($_GET['delete-article']))
+{
   $delete = (int) $_GET['delete-article'];
   $requete = $db->prepare('DELETE FROM `articles` WHERE id = ?');
   $requete->execute(array($delete));
 }
-if (isset($_GET['delete-com']) and !empty($_GET['delete-com'])) {
+// Pour supprimer un commentaire.
+if (isset($_GET['delete-com']) and !empty($_GET['delete-com']))
+{
   $delete = (int) $_GET['delete-com'];
   $requete = $db->prepare('DELETE FROM `commentaires` WHERE id = ?');
   $requete->execute(array($delete));
@@ -39,7 +43,6 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
   <link rel="stylesheet" href="../CSS/blog.css">
   <title>Panel admin - Blog</title>
 </head>
-
 <body>
   <div class="container-fluid gray">
     <header>
@@ -64,7 +67,8 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
           </thead>
           <tbody>
             <?php
-            while ($data = $users->fetch()) {
+            while ($data = $users->fetch())
+            {
               echo "<tr>
                   <td>" . $data['login'] . "<a href=\"admin.php?delete-user=$data[id]\">Supprimer</a> <a href=\"admin-profil.php?id=$data[id]\">Modifier</a></td>";
               echo "<td>" . $data['email'] . "</td>";
@@ -86,7 +90,8 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
           </thead>
           <tbody>
             <?php
-            while ($data = $article->fetch()) {
+            while ($data = $article->fetch())
+            {
               echo "<tr>
                   <td>" . $data['title'] . "<a href=\"admin.php?delete-article=$data[id]\">Supprimer</a> <a href=\"admin-article-edit.php?id=$data[id]\">Modifier</a></td>";
               echo "<td>" . $data['article'] . "</td>";
@@ -102,13 +107,14 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
           <thead>
             <tr>
               <th>Commentaire</th>
-              <th>Id_article</th>
-              <th>Id_utilisateur</th>
+              <th>Titre de l'article</th>
+              <th>Utilisateur</th>
             </tr>
           </thead>
           <tbody>
             <?php
-            while ($data = $com->fetch()) {
+            while ($data = $com->fetch())
+            {
               echo "<tr>
                   <td>" . $data['commentaire'] . "<a href=\"admin-edit-commentaire.php?delete-com=$data[id]\">Supprimer</a> <a href=\"admin-edit-commentaire.php?id=$data[id]\">Modifier</a></td>";
               echo "<td>" . $data['id_article'] . "</td>";
@@ -119,7 +125,6 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
           </tbody>
         </table>
       </div>
-
     </article>
   </main>
   <footer>
@@ -130,5 +135,4 @@ $com = $db->query('SELECT * FROM `commentaires` ORDER BY id DESC'); // Je sélec
     </div>
   </footer>
 </body>
-
 </html>
