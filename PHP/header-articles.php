@@ -1,4 +1,7 @@
 <!-- Page par Jul -->
+<?php
+session_start();
+?>
 <!-- Header dynamique -->
 <nav class="nav bg-dark justify-content-center">
     <?php if(isset($_SESSION['id'])) : ?> <!-- Lorsque la personne est connectée, il verra ces 2 sections dans le header. -->
