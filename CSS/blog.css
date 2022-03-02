@@ -699,14 +699,9 @@ footer {
   position: absolute;
   color: white;
 }
-.erreur-create-article {
-  display: flex;
-  justify-content: center;
-  background-color: black;
-  border: 2px solid #666;
-  width: auto;
-  position: inherit;
-  color: blanchedalmond;
+.notification
+{
+  color: white;
 }
 .categories {
   display: flex;
