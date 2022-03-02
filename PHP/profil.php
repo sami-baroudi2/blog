@@ -18,11 +18,11 @@ if(isset($_POST['Modifier']))
         $password = sha1($_POST['password']);
         $insertData = $db->prepare('UPDATE `utilisateurs` SET `login`= ? ,`email`= ? ,`password`= ? WHERE id = ?'); // La commande utilisée qui va modifier l'user dans la BDD.
         $insertData->execute(array($login,$email,$password,$_SESSION['id'])); // Il va exécuter la commande.
-        echo '<div class="erreur-create-article">Les informations ont bien étés modifiées " . $login . " !'; // Message que la modification à bien été prise en compte.
+        echo '<div class="notification">Les informations ont bien étés modifiées ' . $login . ' !'; // Message que la modification à bien été prise en compte.
     }
     else
     {
-        echo '<div class="erreur-create-article">Tu dois remplir tous les champs !'; // Le message des champs oubliés.
+        echo '<div class="notification">Tu dois remplir tous les champs !'; // Le message des champs oubliés.
     }
 }
 ?>
