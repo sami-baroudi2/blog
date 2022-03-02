@@ -2,8 +2,7 @@
 // Page par Sami.
 session_start();
 require 'configuration.php';
-if (!isset($_SESSION['id']))
-{
+if (!isset($_SESSION['id'])) {
     header('Location: connexion.php');
     die(); // Inaccesibilité en cas de session absente ou fausse. Redirection vers index. ❌
 }
@@ -24,35 +23,21 @@ $check = $req->fetchAll(PDO::FETCH_ASSOC);
     <title>Ajouter un commentaire - Blog</title>
 </head>
 <?php
-if (isset($_GET['id']))
-{
+if (isset($_GET['id'])) {
     $article = $_GET['id'];
     $art = $db->prepare('SELECT * FROM articles WHERE id = ?');
     $art->execute(array($article));
     $fetch = $art->fetch();
 }
 ?>
+
 <body>
     <main>
         <?php include('header-admin.php'); ?>
         <div class="background">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
-        <?php
-        if (isset($_GET['commentaire'])) {
-            $commentaire = $_GET['commentaire'];
 
-            switch ($commentaire) {
-                case 'short':
-                    echo '<p style="color : white;">ERREUR : Votre commentaire doit faire au minimum 5 caractères</p>';
-                    break;
-
-                case 'empty':
-                    echo '<p style="color : white;">ERREUR : Tout les champs doivent être remplis</p>';
-                    break;
-            }
-        }
-        ?>
 
         <p1 class="connexion-titre">Commentaire</p1><br />
         <div class="zone">
@@ -65,6 +50,21 @@ if (isset($_GET['id']))
             </div>
             <div class="formulaire-de-co">
                 <form action="TREATMENT/commentaire_treatment.php" method="POST">
+                    <?php
+                    if (isset($_GET['commentaire'])) {
+                        $commentaire = $_GET['commentaire'];
+
+                        switch ($commentaire) {
+                            case 'short':
+                                echo '<p style="color : white;">ERREUR : Votre commentaire doit faire au minimum 5 caractères</p>';
+                                break;
+
+                            case 'empty':
+                                echo '<p style="color : white;">ERREUR : Tout les champs doivent être remplis</p>';
+                                break;
+                        }
+                    }
+                    ?>
                     <label for="id">ID</label><br><br>
                     <input type="text" name="id" value="<?= $article ?>" readonly>
                     <label for="commentaire">Commentaire</label><br><br>
