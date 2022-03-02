@@ -22,9 +22,9 @@ $articles = $db->query('SELECT * FROM `articles` ORDER BY id DESC LIMIT 3')
         <?php
         include ("PHP/header.php");
         ?>
-        </header>      
-      </div>
-      <main>
+      </header>      
+    </div>
+    <main class="footer-auto-bottom">
         <div class="background">
           <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
@@ -44,9 +44,11 @@ $articles = $db->query('SELECT * FROM `articles` ORDER BY id DESC LIMIT 3')
             </div>
           </main>
           <footer>
-            <?php
-            include('PHP/footer.php');
-            ?>
+            <div class="container-fluid gray">
+              <?php
+              include("PHP/footer.php");
+              ?>
+            </div>
           </footer>
-          </body>
-          </html>
+        </body>
+        </html>
