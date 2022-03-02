@@ -22,9 +22,9 @@ if (isset($_POST['Modifier'])) {
         $id_categorie = ($_POST['id_categorie']);
         $insertData = $db->prepare('UPDATE `articles` SET `title`= ? ,`article`= ? ,`id_categorie`= ? WHERE id=?'); // La commande utilisée qui va modifier l'article dans la BDD.
         $insertData->execute(array($title, $article, $id_categorie, $grabID)); // Il va exécuter la commande.
-        echo '<div class="erreur-create-article">L\'article a bien été modifié !'; // Message que la modification à bien été prise en compte.
+        echo '<div class="notification">L\'article a bien été modifié !'; // Message que la modification à bien été prise en compte.
     } else {
-        echo '<div class="erreur-create-article">Tu dois remplir tous les champs !'; // Le message des champs oubliés.
+        echo '<div class="notification">Tu dois remplir tous les champs !'; // Le message des champs oubliés.
     }
 }
 ?>

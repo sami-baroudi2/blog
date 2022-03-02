@@ -1,5 +1,12 @@
 <?php
+// Page par Sami.
+session_start();
 require 'configuration.php';
+if (!isset($_SESSION['id']))
+{
+    header('Location: connexion.php');
+    die(); // Inaccesibilité en cas de session absente ou fausse. Redirection vers index. ❌
+}
 $req = $db->prepare('SELECT * FROM articles');
 $req->execute(array());
 $check = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -14,20 +21,20 @@ $check = $req->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/blog.css">
-    <title>Commetaire</title>
+    <title>Ajouter un commentaire - Blog</title>
 </head>
 <?php
-if (isset($_GET['id'])) {
+if (isset($_GET['id']))
+{
     $article = $_GET['id'];
     $art = $db->prepare('SELECT * FROM articles WHERE id = ?');
     $art->execute(array($article));
     $fetch = $art->fetch();
 }
 ?>
-
 <body>
     <main>
-        <?php include('header-articles.php'); ?>
+        <?php include('header-admin.php'); ?>
         <div class="background">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>

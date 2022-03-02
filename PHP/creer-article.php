@@ -15,9 +15,9 @@ if (isset($_POST['submit'])) {
     echo $title . ";" . $article . ';' . $id_categorie . ';' . $_SESSION['id'];
     $insertData = $db->prepare('INSERT INTO `articles`(`title`, `article`, `id_utilisateur`, `id_categorie`, `date`) VALUES (?, ?, ?, ?, NOW())');
     $insertData->execute(array($title, $article, $id_session, $id_categorie));
-    echo '<div class="erreur-create-article">Article posté!</div>'; // Message si l'article à été posté avec succès.
+    echo '<div class="notification">Article posté!</div>'; // Message si l'article à été posté avec succès.
   } else {
-    echo '<div class="erreur-create-article">Champs manquants!</div>'; // Message si l'article n'est pas posté, pour champs manquants.
+    echo '<div class="notification">Champs manquants!</div>'; // Message si l'article n'est pas posté, pour champs manquants.
   }
 }
 ?>
