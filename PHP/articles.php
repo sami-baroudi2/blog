@@ -36,7 +36,7 @@ $start = ($pageActuelle - 1) * $articles_par_page;
       ?>
     </header>
   </div>
-  <main class="articles-page">
+  <main class="footer-auto-bottom">
     <div class="background">
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
