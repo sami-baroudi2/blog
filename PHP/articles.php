@@ -68,7 +68,10 @@ $start = ($pageActuelle-1)*$articles_par_page;
                     <td><?php echo $data['article']; ?></td>
                     <td>
                       <a href="commentaire.php?id=<?php echo $data['id']; ?>" ?>
-                      <input type="submit" value="Rajouter un commentaire?" class="edit">
+                      <input type="submit" value="Rajouter un commentaire" class="edit">
+                      </a>
+                      <a href="view-coms.php?id=<?php echo $data['id']; ?>" ?>
+                      <input type="submit" value="Voir les commentaires" class="edit">
                       </a>
                     </td>
                   </tr>
