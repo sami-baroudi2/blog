@@ -37,9 +37,8 @@ $data = $request->fetch();
       $art->execute(array($article));
       $fetchArt = $art->fetch();
 
-      $com = $db->prepare('SELECT * FROM commentaires WHERE id_article = ?');
+      $com = $db->prepare('SELECT commentaire, date FROM commentaires WHERE id_article = ?');
       $com->execute(array($article));
-      $fetchCom = $com->fetch();
     }
     ?>
 
