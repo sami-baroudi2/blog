@@ -905,3 +905,8 @@ select {
 .pagination-links a:hover:not(.active) {
   background-color: #ddd;
 }
+.comment {
+  display : flex;
+  align-items: center;
+  justify-content: center;
+}

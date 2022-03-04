@@ -3,32 +3,76 @@
 require_once('configuration.php');
 $grabID = $_GET['id']; // Il va récupérer l'ID du commentaire correspondant à l'article.
 $request = $db->query('SELECT * FROM `commentaires`');
-$data = $request->fetch();<!DOCTYPE html>
+$data = $request->fetch();
 ?>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="../CSS/blog.css">
-    <title>Les commentaires</title>
-  </head>
-  <body>
-    <div class=" container-fluid gray">
-      <header>
-        <?php
-        include ('header-articles.php');
-        ?>
-      </header>      
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="../CSS/blog.css">
+  <title>Les commentaires</title>
+</head>
+
+<body>
+  <div class=" container-fluid gray">
+    <header>
+      <?php
+      include('header-articles.php');
+      ?>
+    </header>
+  </div>
+  <main class="footer-auto-bottom">
+    <div class="background">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
-    <main class="footer-auto-bottom">
-      <div class="background">
-        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <?php
+    if (isset($_GET['id'])) {
+      $article = $_GET['id'];
+      $art = $db->prepare('SELECT * FROM articles WHERE id = ?');
+      $art->execute(array($article));
+      $fetchArt = $art->fetch();
+
+      $com = $db->prepare('SELECT * FROM commentaires WHERE id_article = ?');
+      $com->execute(array($article));
+      $fetchCom = $com->fetch();
+    }
+    ?>
+
+    <div class="titre-index-zone">
+      <p1 class="titre-index">L'article' :</p1><br /></br>
+      <div>
+        <h2><?= $fetchArt['title']; ?></h2><br><br>
+        <h4 style="color : white;"><?= $fetchArt['article']; ?></h4>
       </div>
-      <div class="titre-index-zone">
-        <p1 class="titre-index">Les commentaires de l'article :</p1><br />
-      </div>
-      <body>
-        <article>
+    </div>
+    <article>
+          <div class="table-wrapper">
+            <table class="fl-table">
+              <thead>
+                <tr>
+                  <th>Commentaire</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                while ($data = $com->fetch())
+                {
+                  ?>
+                  <tr>
+                    <td><?php echo $data['commentaire']; ?> <p style="text-align : right"><?php echo $data['date']; ?></p></td>
+                  </tr>
+              </tbody>
+              <?php
+              }
+              ?>
+            </table>
+          </div>
+        </article>
+
+    <body>
+      <article>
