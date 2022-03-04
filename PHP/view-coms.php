@@ -50,28 +50,28 @@ $data = $request->fetch();
       </div>
     </div>
     <article>
-          <div class="table-wrapper">
-            <table class="fl-table">
-              <thead>
-                <tr>
-                  <th>Commentaire</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                while ($data = $com->fetch())
-                {
-                  ?>
-                  <tr>
-                    <td><?php echo $data['commentaire']; ?> <p style="text-align : right"><?php echo $data['date']; ?></p></td>
-                  </tr>
-              </tbody>
-              <?php
-              }
-              ?>
-            </table>
-          </div>
-        </article>
+      <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th>Commentaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            while ($data = $com->fetch()) {
+            ?>
+              <tr>
+                <td><?php echo $data['commentaire']; ?> <p style="text-align : right"><?php echo $data['date']; ?></p>
+                </td>
+              </tr>
+          </tbody>
+        <?php
+            }
+        ?>
+        </table>
+      </div>
+    </article>
 
     <body>
       <article>
